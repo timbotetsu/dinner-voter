@@ -13,4 +13,8 @@ public class PageController {
         return "index";
     }
 
+    @GetMapping("createnew")
+    public String createnew() {
+        return "createnew";
+    }
 }

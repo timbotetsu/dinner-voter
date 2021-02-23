@@ -6,6 +6,7 @@
 
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-icons.css" rel="stylesheet">
     <link href="/bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
     <link href="/bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet">
 
@@ -21,8 +22,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="/">首页</a>
-                <a class="nav-link" href="/createnew">新投票</a>
+                <a class="nav-link" aria-current="page" href="/">首页</a>
+                <a class="nav-link active" href="/createnew">新投票</a>
                 <a class="nav-link" href="/list">列表</a>
                 <a class="nav-link" href="/about">关于</a>
             </div>
@@ -31,39 +32,38 @@
 </nav>
 
 <div class="container">
-    <h1 class="mt-5">投票系统</h1>
-
+    <h1 class="mt-5">新投票</h1>
     <p class="lead">
-        测试，晚餐投票系统
+        投票填写后，无法再对投票进行编辑/删除
     </p>
-    <button class="btn btn-info btn-lg" onclick="location.href = '/createnew'" type="button">新建投票</button>
 
-    <table class="mt-5 table table-hover table-striped">
-        <thead>
-        <tr>
-            <th scope="col">序号</th>
-            <th scope="col">时间 / 店名</th>
-            <th scope="col">选项</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">3</th>
-            <td>2021-02-20 / AAA</td>
-            <td>选项1;选项2</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>2021-02-19 / BBB</td>
-            <td>选项1;选项2</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>2021-02-18 / CCC</td>
-            <td>选项1;选项2</td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="form-title"><i class="bi bi-house"></i></span>
+        <input type="text" class="form-control" placeholder="店名" aria-label="店名" aria-describedby="form-title">
+    </div>
+
+    <hr class="my-3">
+
+    <div class="option1">
+        <div class="input-group mb-3">
+            <span class="input-group-text">选项1</span>
+            <input class="form-control" id="option1" type="text">
+        </div>
+    </div>
+
+    <div class="option2">
+        <div class="input-group mb-3">
+            <span class="input-group-text">选项2</span>
+            <input class="form-control" id="option2" type="text">
+        </div>
+    </div>
+
+    <div class="add"></div>
+
+    <button class="btn btn-outline-dark float-end" onclick="addOption()" type="button">
+        <i class="bi bi-plus"></i>
+    </button>
+
 </div>
 
 <footer class="footer">
@@ -74,6 +74,7 @@
 
 <script src="/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/jquery/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="/custom.js" crossorigin="anonymous"></script>
 
 </body>
 </html>
