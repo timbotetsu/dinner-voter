@@ -29,3 +29,44 @@ function delOption() {
         "   </button>\n" +
         "</span>");
 }
+
+function createNewPoll() {
+    $(".isError").html("");
+    setTimeout(function () {
+        if (checkContent()) {
+            let str = "";
+            for (let i = 1; i <= options; ++i) {
+                let num = i;
+                let text = $("#option" + i).val();
+                if (i === 1) {
+                    str += "" + num + ":" + text;
+                } else {
+                    str += ";" + num + ":" + text;
+                }
+            }
+
+            let params = {};
+            params.shop = $("#form-shop").val();
+            params.options = str;
+
+            $.post({
+                url: '/createnew',
+                data: params,
+                success: function (data) {
+                    setTimeout(function () {
+                        location.href = '/success';
+                    }, 500);
+                }
+            });
+
+        } else {
+            $(".errorMsg").html("<span style='color: red; '>尚有内容未填写，请检查输入</span>");
+        }
+    }, 500);
+}
+
+function checkContent() {
+    return $("input").filter(function () {
+        return $.trim($(this).val()).length === 0
+    }).length === 0;
+}

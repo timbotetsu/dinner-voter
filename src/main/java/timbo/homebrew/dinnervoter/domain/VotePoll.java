@@ -5,11 +5,10 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Vote {
+public class VotePoll {
 
     private long id;
-    private String title;
-    private String summary;
+    private String shop;
     private String options;
     private Date createTime;
 

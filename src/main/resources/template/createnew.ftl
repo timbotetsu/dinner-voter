@@ -38,8 +38,8 @@
     </p>
 
     <div class="input-group mb-3">
-        <span class="input-group-text" id="form-title"><i class="bi bi-house"></i></span>
-        <input type="text" class="form-control" placeholder="店名" aria-label="店名" aria-describedby="form-title">
+        <span class="input-group-text"><i class="bi bi-house"></i></span>
+        <input type="text" id="form-shop" class="form-control" placeholder="店名" aria-label="店名" aria-describedby="form-title">
     </div>
 
     <hr class="my-3">
@@ -60,9 +60,17 @@
 
     <div class="add"></div>
 
-    <button class="btn btn-outline-dark float-end" onclick="addOption()" type="button">
+    <button class="btn btn-outline-primary float-end" onclick="addOption()" type="button">
         <i class="bi bi-plus"></i>
     </button>
+
+    <p>
+    <div class="errorMsg"></div>
+    </p>
+
+    <section>
+        <button onclick="createNewPoll()" class="btn btn-primary">提交</button>
+    </section>
 
 </div>
 

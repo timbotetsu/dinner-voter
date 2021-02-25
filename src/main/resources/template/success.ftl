@@ -31,33 +31,11 @@
 </nav>
 
 <div class="container">
-    <h1 class="mt-5">投票系统</h1>
+    <h1 class="mt-5">成功</h1>
 
     <p class="lead">
-        测试，晚餐投票系统，总数${voteSummaries?size}
+        页面将会在3秒内转回首页
     </p>
-    <button class="btn btn-info btn-lg" onclick="location.href = '/createnew'" type="button">新建投票</button>
-
-    <table class="mt-5 table table-hover table-striped">
-        <thead>
-        <tr>
-            <th scope="col">序号</th>
-            <th scope="col">时间 / 店名</th>
-            <th scope="col">选项</th>
-            <th scope="col">整体满意度</th>
-        </tr>
-        </thead>
-        <tbody>
-        <#list voteSummaries as item>
-            <tr>
-                <th scope="row">${item.id}</th>
-                <td>${item.title}</td>
-                <td>${item.options}</td>
-                <td>${item.satisfactionRatio}</td>
-            </tr>
-        </#list>
-        </tbody>
-    </table>
 </div>
 
 <footer class="footer">
@@ -68,6 +46,12 @@
 
 <script src="/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/jquery/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script>
+    window.setTimeout(function () {
+        window.location.href = "/";
+    }, 3000);
+</script>
+
 
 </body>
 </html>
