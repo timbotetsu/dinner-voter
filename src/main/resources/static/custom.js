@@ -39,9 +39,9 @@ function createNewPoll() {
                 let num = i;
                 let text = $("#option" + i).val();
                 if (i === 1) {
-                    str += "" + num + ":" + text;
+                    str += text;
                 } else {
-                    str += ";" + num + ":" + text;
+                    str += ";" + text;
                 }
             }
 
@@ -69,4 +69,33 @@ function checkContent() {
     return $("input").filter(function () {
         return $.trim($(this).val()).length === 0
     }).length === 0;
+}
+
+function vote() {
+    $(".isError").html("");
+    setTimeout(function () {
+        if (checkOptionSelected()) {
+            let id = $("input[name='voteOptionRadio']:checked").attr("id");
+
+            let params = {};
+            params.voteFor = $("label[for='" + id + "']").text().trim();
+            params.rating = $("#ratingValue").val();
+
+            $.post({
+                url: '/vote',
+                data: params,
+                success: function (data) {
+                    setTimeout(function () {
+                        location.href = '/success';
+                    }, 500);
+                }
+            });
+        } else {
+            $(".errorMsg").html("<span style='color: red; '>请选择至少一个选项</span>");
+        }
+    }, 500)
+}
+
+function checkOptionSelected() {
+    return $("input[name='voteOptionRadio']:checked").length === 1;
 }
