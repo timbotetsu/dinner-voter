@@ -28,4 +28,11 @@ public class ApiController {
         return ResponseEntity.badRequest().build();
     }
 
+    @PostMapping("vote")
+    @ResponseBody
+    public ResponseEntity vote(long voteId, String voteFor, int rating) {
+        voteService.vote(voteId, voteFor, rating);
+        return ResponseEntity.ok().build();
+    }
+
 }

@@ -50,7 +50,7 @@
         <tbody>
         <#list voteSummaries as item>
             <tr>
-                <th scope="row">${item.id}</th>
+                <th scope="row"><a href="/vote/${item.id}">${item.id}</a></th>
                 <td>${item.title}</td>
                 <td>${item.options}</td>
                 <td>${item.satisfactionRatio}</td>

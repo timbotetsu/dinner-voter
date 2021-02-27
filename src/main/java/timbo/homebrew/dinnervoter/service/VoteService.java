@@ -39,7 +39,21 @@ public class VoteService {
                     .forEach(s -> ob.append(s).append(" / "));
             voteSummary.setOptions(ob.substring(0, ob.length() - 2));
 
-            voteSummary.setSatisfactionRatio("0"); // TODO
+            List<VoteDetail> voteDetails = voteMapper.findAllVoteDetailByVoteId(v.getId());
+            if (voteDetails.size() == 0) {
+                voteSummary.setSatisfactionRatio("无投票");
+            } else {
+                AtomicInteger totalVote = new AtomicInteger(0);
+                AtomicInteger ratingSum = new AtomicInteger(0);
+                voteDetails.forEach(d -> {
+                    totalVote.incrementAndGet();
+                    ratingSum.addAndGet(d.getRating());
+                });
+                voteSummary.setSatisfactionRatio(new BigDecimal(ratingSum.doubleValue() / (totalVote.doubleValue() * 10))
+                        .multiply(new BigDecimal(100))
+                        .setScale(2, RoundingMode.HALF_EVEN)
+                        .toString() + "%");
+            }
 
             voteSummaries.add(voteSummary);
         });
@@ -71,14 +85,14 @@ public class VoteService {
                     }
 
                     AtomicInteger voteCount = new AtomicInteger(0);
-                    AtomicInteger satisfactionSum = new AtomicInteger(0);
+                    AtomicInteger ratingSum = new AtomicInteger(0);
                     filterList.forEach(f -> {
                         totalVote.incrementAndGet();
                         voteCount.incrementAndGet();
-                        satisfactionSum.addAndGet(f.getRating());
+                        ratingSum.addAndGet(f.getRating());
                     });
                     options.add(Triple.of(s, voteCount.toString(),
-                            new BigDecimal(satisfactionSum.doubleValue() / (voteCount.doubleValue() * 10))
+                            new BigDecimal(ratingSum.doubleValue() / (voteCount.doubleValue() * 10))
                                     .multiply(new BigDecimal(100))
                                     .setScale(2, RoundingMode.HALF_EVEN)
                                     .toString() + "%"));
@@ -91,5 +105,9 @@ public class VoteService {
 
     public void save(String shop, String options) {
         voteMapper.save(shop, options);
+    }
+
+    public int vote(long voteId, String voteFor, int rating) {
+        return voteMapper.vote(voteId, voteFor, rating);
     }
 }

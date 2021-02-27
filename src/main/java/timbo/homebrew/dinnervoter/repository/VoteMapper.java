@@ -29,4 +29,10 @@ public interface VoteMapper {
     @Select("SELECT * FROM VOTE_DETAIL WHERE VOTE_ID = #{voteId}")
     List<VoteDetail> findAllVoteDetailByVoteId(@Param("voteId") long voteId);
 
+    @Insert("INSERT INTO VOTE_DETAIL(VOTE_ID, VOTE_FOR, RATING) " +
+            " VALUES(#{voteId}, #{voteFor}, #{rating}) ")
+    int vote(@Param("voteId") long voteId,
+             @Param("voteFor") String voteFor,
+             @Param("rating") int rating);
+
 }

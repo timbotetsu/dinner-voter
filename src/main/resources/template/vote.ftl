@@ -39,7 +39,7 @@
         目前共有${voteOptionDetail.getTotalVote()}人投票
     </p>
 
-    <input hidden id="voteId" text="${voteId}">
+    <input hidden id="voteId" value="${voteId}">
 
     <#list voteOptionDetail.getOptions() as item>
         <div class="form-check vote-option-radio">
@@ -76,6 +76,7 @@
 
 <script src="/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/jquery/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="/custom.js" crossorigin="anonymous"></script>
 <script>
     let slider = document.getElementById("rating");
     let output = document.getElementById("ratingValue");

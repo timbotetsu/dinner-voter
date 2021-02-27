@@ -36,7 +36,6 @@ function createNewPoll() {
         if (checkContent()) {
             let str = "";
             for (let i = 1; i <= options; ++i) {
-                let num = i;
                 let text = $("#option" + i).val();
                 if (i === 1) {
                     str += text;
@@ -78,8 +77,9 @@ function vote() {
             let id = $("input[name='voteOptionRadio']:checked").attr("id");
 
             let params = {};
+            params.voteId = $("#voteId").val();
             params.voteFor = $("label[for='" + id + "']").text().trim();
-            params.rating = $("#ratingValue").val();
+            params.rating = $("#rating").val();
 
             $.post({
                 url: '/vote',
