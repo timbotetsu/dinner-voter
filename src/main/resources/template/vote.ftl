@@ -11,7 +11,7 @@
     <link href="/custom.css" rel="stylesheet">
 
 
-    <title>Hello, world!</title>
+    <title>为 ${voteOptionDetail.getTitle()} 投票</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,8 +25,6 @@
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="/">首页</a>
                 <a class="nav-link" href="/createnew">新投票</a>
-                <a class="nav-link" href="/list">列表</a>
-                <a class="nav-link" href="/about">关于</a>
             </div>
         </div>
     </div>
@@ -36,7 +34,7 @@
     <h1 class="mt-5">为 ${voteOptionDetail.getTitle()} 投票</h1>
 
     <p class="lead">
-        目前共有${voteOptionDetail.getTotalVote()}人投票
+        总计${voteOptionDetail.getTotalVote()}人投票
     </p>
 
     <input hidden id="voteId" value="${voteId}">
@@ -47,7 +45,7 @@
             <label class="form-check-label" for="voteOptionRadio${item?counter}">
                 <div class="fs-3">${item.left}</div>
             </label>
-            <div class="fs-5"> - 共有${item.middle}选择此项，满意度${item.right}</div>
+            <div class="fs-5"> - ${item.middle}人选择此项，满意度${item.right}</div>
         </div>
     </#list>
 

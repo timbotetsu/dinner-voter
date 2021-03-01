@@ -10,7 +10,7 @@
     <link href="/bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
     <link href="/bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet">
 
-    <title>Hello, world!</title>
+    <title>创建新投票</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -24,8 +24,6 @@
             <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="/">首页</a>
                 <a class="nav-link active" href="/createnew">新投票</a>
-                <a class="nav-link" href="/list">列表</a>
-                <a class="nav-link" href="/about">关于</a>
             </div>
         </div>
     </div>

@@ -68,7 +68,7 @@ public class VoteService {
 
         VoteOptionDetail detail = new VoteOptionDetail();
 
-        detail.setTitle("于" + date + "在" + votePoll.getShop() + "订购的晚餐");
+        detail.setTitle(" " + date + " 在 " + votePoll.getShop() + " 订购的晚餐");
 
         LinkedList<Triple<String, String, String>> options = new LinkedList<>();
         AtomicInteger totalVote = new AtomicInteger(0);
